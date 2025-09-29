@@ -1,0 +1,21 @@
+/* App.css - reset lại mặc định để không phá UI */
+
+#root {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;   /* không giới hạn chiều rộng */
+  text-align: left;  /* để text không bị căn giữa toàn app */
+}
+
+/* Nếu vẫn muốn giữ card có padding thì giữ riêng */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.08); */
+}
+
+.read-the-docs {
+  color: #888;
+  font-size: 0.9rem;
+}
