@@ -1,0 +1,60 @@
+#version: "3.9"
+#
+#services:
+#  backend:
+#    build:
+#      context: ./SpingWeb2
+#      dockerfile: Dockerfile
+#    container_name: spring_backend
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - mynet
+#
+#  frontend:
+#    build:
+#      context: ./frontend-react
+#      dockerfile: Dockerfile
+#    container_name: react_frontend
+#    ports:
+#      - "3000:80"
+#    depends_on:
+#      - backend
+#    environment:
+#      - VITE_API_BASE_URL=http://backend:8080
+#    networks:
+#      - mynet
+#
+#networks:
+#  mynet:
+#    driver: bridge
+
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./SpingWeb2
+      dockerfile: Dockerfile
+    container_name: spring_backend
+    ports:
+      - "8080:8080"
+    networks:
+      - mynet
+
+  frontend:
+    build:
+      context: ./frontend-react
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE_URL=http://localhost:8080
+    container_name: react_frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - mynet
+networks:
+  mynet:
+    driver: bridge
